@@ -5,7 +5,9 @@ Strudel = portage JavaScript du langage de patterns TidalCycles, dans le navigat
 
 ## REPL : bases
 - Évaluer : Ctrl+Entrée ; stopper : Ctrl+. (raccourcis usuels du REPL)
-- Tempo : `setcpm(n)` (cycles/minute), ou `.cpm(n)` sur un pattern
+- Tempo : `setcpm(n)` (cycles/minute, valeur fixe, pas de pattern) ; `cpm = BPM / 4` en 4/4
+- Tempo séquencé (global) : `.cps("<30 40>".div(60))` sur une seule piste ; sinon `fast("<1 2>")`
+- `all(x => x...)` (ligne à part, sans `$:`) : transforme toutes les pistes ; `each` : piste par piste
 - Plusieurs pistes en parallèle : `$: ...` sur chaque ligne ; `_$:` pour muter une piste
 - Visuels : `.pianoroll()`, `.punchcard()`, `.color("red")`
 
@@ -14,6 +16,7 @@ Strudel = portage JavaScript du langage de patterns TidalCycles, dans le navigat
 |---|---|---|
 | espace | séquence dans un cycle | `s("bd sd hh cp")` |
 | `:x` | numéro de sample | `s("hh:0 hh:1")` |
+| `:x:g` | numéro de sample + gain | `s("bd:0:.5")` |
 | `~` ou `-` | silence | `s("bd ~ sd ~")` |
 | `[]` | sous-séquence | `s("bd [sd sd] hh")` |
 | `*n` / `/n` | accélérer / ralentir | `s("hh*8")`, `note("[c e g]/2")` |
@@ -57,7 +60,9 @@ Backticks pour du multi-ligne, guillemets simples pour une chaîne non parsée.
 -> `.range(min,max)`, `.segment(n)`, `.slow(n)`. Ex : `s("hh*16").lpf(sine.range(300,4000).slow(4))`
 
 ## Temps
-`fast slow early late rev palindrome iter iterBack ply plyWith segment compress zoom linger fastGap inside outside ribbon bite swing swingBy euclid euclidRot euclidLegato`
+`late(t)` = `t ~>` de Tidal, `early(t)` = `<~`. `iter` fait tourner l'ordre ; `chunk(n, f)` transforme une part par cycle.
+
+`fast slow hurry early late rev palindrome iter iterBack ply plyWith segment compress zoom linger fastGap inside outside ribbon bite swing swingBy euclid euclidRot euclidLegato`
 
 ## Construction de patterns
 `cat` (1 élément/cycle), `seq` (tout dans un cycle), `stack`, `stepcat([3,"e3"],[1,"g3"])`, `arrange([4,patA],[2,patB])`, `polymeter`, `run(n)`, `binary(n)`, `silence`
