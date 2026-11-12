@@ -2,6 +2,12 @@
 
 Fichiers créés avec Claude pendant le travail sur Strudel (https://strudel.cc/).
 
-- `aide-memoire.md` : référence condensée des fonctions Strudel
-- `astuces.md` : notes et explications issues de nos échanges
-- `patterns/` : patterns prêts à coller dans le REPL (un fichier par idée)
+| Fichier | Contenu |
+|---|---|
+| [`astuces.md`](astuces.md) | **Synthèse de nos échanges** : `bite`, `plyWith` + `mul`, forme courte vs `x => x`, `every`/`lastOf`, avec exemples |
+| [`aide-memoire.md`](aide-memoire.md) | Référence condensée de toutes les fonctions Strudel par famille |
+| [`patterns/`](patterns/) | Patterns prêts à coller dans le REPL (un fichier par idée) |
+
+## Patterns
+- [`ply-rampe-speed.js`](patterns/ply-rampe-speed.js) : répétitions qui montent en pitch et baissent en volume
+- [`bite-scrub.js`](patterns/bite-scrub.js) : mélodie découpée et réordonnée avec `bite`
